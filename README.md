@@ -109,14 +109,22 @@ Serilog is a popular logging library for .NET applications. It provides a flexib
 Serilog integrates well with various logging targets, such as console output, files, databases, and third-party logging services, making it a versatile choice for implementing logging capabilities in your .NET projects.
 
 ### Serilog configuration
+This NuGet packages comes with a simple API to integrate Serilog into your application. You can call the UseSerilog method on the HostBuilder instance to provide a lambda method to configure Serilog.
+
+The most flexible way to configure Serilog is through application settings, which is achieved by calling `ReadFrom.Configuration()`.
+
 ``` csharp
 builder.Host.UseSerilog((context, configuration) => 
     configuration.ReadFrom.Configuration(context.Configuration));
 ```
 
+`UseSerilogRequestLogging()` method to introduce automatic HTTP request logging in our API.
+
 ``` csharp
 app.UseSerilogRequestLogging();
 ```
+
+Serilog section in `appsettings.json` file.
 
 ``` json
 {
@@ -147,12 +155,20 @@ app.UseSerilogRequestLogging();
 ```
 
 ## Architecture Tests
+Architecture tests, also known as architectural tests or structural tests, are a type of testing that focuses on verifying the adherence of a software system to its intended architectural design. These tests examine the relationships and dependencies between various components, modules, layers, or projects within the architecture.
 
+The main objectives of architecture tests are:
+1. **Enforcing Design and Structure**: Architecture tests validate that the software system follows the intended architectural design, ensuring proper separation of concerns and component interactions.
+2. **Detecting Architectural Violations**: Architecture tests identify deviations from expected architectural constraints, such as tight coupling or bypassing layers, enabling early detection and resolution of architectural issues.
+3. **Preventing Regressions**: By including architecture tests in the testing suite, teams can catch unintended changes that may impact the architecture, preventing potential regressions.
+4. **Improving Maintainability and Flexibility**: Architecture tests promote code maintainability, modularity, and the ease of making architectural changes, enhancing the long-term maintainability and flexibility of the system.
+5. **Facilitating Collaboration**: Architecture tests serve as a communication tool, providing a shared understanding of the system's architecture, patterns, and dependencies among team members and stakeholders.
+
+The provided project demonstrates the presence of architecture tests that enforce clean architecture principles. These tests validate the dependencies between different layers or projects, ensuring that the Domain, Application, Infrastructure, and Presentation layers adhere to their intended dependencies and do not violate the clean architecture principles. By running these architecture tests, the project maintains a consistent and modular structure, supporting the maintainability, testability, and flexibility that clean architecture promotes.
 
 ## Attributions
 * Clean Architecture: A Craftsman's Guide to Software Structure and Design by C. Martin
-* 
 * https://www.milanjovanovic.tech/blog/clean-architecture-folder-structure
 * https://www.milanjovanovic.tech/blog/clean-architecture-and-the-benefits-of-structured-software-design
 * https://www.milanjovanovic.tech/blog/structured-logging-in-asp-net-core-with-serilog
-* https://www.milanjovanovic.tech/blog/structured-logging-in-asp-net-core-with-serilog
+* https://www.milanjovanovic.tech/blog/enforcing-software-architecture-with-architecture-tests
