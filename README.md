@@ -27,6 +27,8 @@ The Infrastructure Layer handles external concerns and provides implementations 
 #### Persistence Layer:
 The Persistence Layer is a specific type of infrastructure layer that deals with data persistence and storage. It includes implementations of repositories, data mappers, or Object-Relational Mapping (ORM) frameworks. This layer provides the necessary mechanisms to persist and retrieve domain entities and data from a database or other storage systems.
 
+![image](https://github.com/edinSahbaz/clean-api-template/assets/47791892/39b3d800-fecf-4c5a-b702-9f767ee03169)
+
 ## Benefits Using of Clean Architecture
 #### Maintainability: 
 Clean Architecture separates concerns and reduces code dependencies, making it easier to understand and modify individual components without impacting the entire system.
@@ -145,3 +147,12 @@ app.UseSerilogRequestLogging();
 ```
 
 ## Architecture Tests
+
+
+## Attributions
+* Clean Architecture: A Craftsman's Guide to Software Structure and Design by C. Martin
+* 
+* https://www.milanjovanovic.tech/blog/clean-architecture-folder-structure
+* https://www.milanjovanovic.tech/blog/clean-architecture-and-the-benefits-of-structured-software-design
+* https://www.milanjovanovic.tech/blog/structured-logging-in-asp-net-core-with-serilog
+* https://www.milanjovanovic.tech/blog/structured-logging-in-asp-net-core-with-serilog
