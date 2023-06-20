@@ -12,36 +12,90 @@ Each layer in Clean Architecture has a specific responsibility and encapsulates 
 
 <img width="400" alt="clean-removebg-preview" src="https://github.com/edinSahbaz/clean-api-template/assets/47791892/5d3afb3b-042e-417f-a7fd-75f6647d5118">
 
-### Presentation Layer:
+#### Presentation Layer:
 The Presentation Layer is responsible for handling the user interface and interaction. It includes components like web APIs, user interfaces, or command-line interfaces. This layer is primarily concerned with receiving user input, displaying information, and coordinating the flow of data between the user and the application.
 
-### Application Layer:
+#### Application Layer:
 The Application Layer contains the application-specific business logic and use cases. It acts as an intermediary between the Presentation Layer and the Domain Layer. This layer orchestrates the execution of use cases by coordinating the interactions between different components and applying business rules. It does not contain any infrastructure-related or implementation-specific details.
 
-### Domain Layer:
+#### Domain Layer:
 The Domain Layer encapsulates the core business logic and entities of the application. It represents the heart of the system and contains business rules, entities, value objects, and domain-specific logic. The Domain Layer is independent of any external frameworks or technologies and should be the most stable and reusable part of the architecture.
 
-### Infrastructure Layer:
+#### Infrastructure Layer:
 The Infrastructure Layer handles external concerns and provides implementations for data access, external services, frameworks, and other infrastructure-related code. It includes components like databases, file systems, third-party APIs, and external integrations. The Infrastructure Layer interacts with the external world, enabling the application to store and retrieve data, communicate with external systems, and handle cross-cutting concerns like logging or caching.
 
-### Persistence Layer:
+#### Persistence Layer:
 The Persistence Layer is a specific type of infrastructure layer that deals with data persistence and storage. It includes implementations of repositories, data mappers, or Object-Relational Mapping (ORM) frameworks. This layer provides the necessary mechanisms to persist and retrieve domain entities and data from a database or other storage systems.
 
 ## Benefits Using of Clean Architecture
-### Maintainability: 
+#### Maintainability: 
 Clean Architecture separates concerns and reduces code dependencies, making it easier to understand and modify individual components without impacting the entire system.
 
-### Testability: 
+#### Testability: 
 Clean Architecture promotes thorough unit testing by isolating business logic from external dependencies, allowing for focused and reliable testing of core application functionality.
 
-### Scalability: 
+#### Scalability: 
 The modular structure of Clean Architecture enables independent scaling of specific components or layers, ensuring optimal performance and resource allocation.
 
-### Technology Independence: 
+#### Technology Independence: 
 Clean Architecture decouples the core business logic from implementation details, enabling flexibility in adopting new technologies or frameworks without extensive code changes.
 
-### Flexibility and Adaptability:
+#### Flexibility and Adaptability:
 Clean Architecture allows for easier modification and evolution of the system as requirements change, thanks to the separation of concerns and minimal ripple effects across the codebase.
 
-### Code Reusability: 
+#### Code Reusability: 
 Clean Architecture promotes the creation of reusable code by keeping core business logic separate, reducing duplication, and improving development efficiency.
+
+## Project Structure
+### Domain Layer
+The Domain layer sits at the core of the Clean Architecture. Here we define things like entities, value objects, aggregates, domain events, exceptions, repository interfaces, etc.
+
+Here is the folder structure used in this template:
+![domain](https://github.com/edinSahbaz/clean-api-template/assets/47791892/974e150d-d9c4-4ed1-967a-ab557092e019)
+
+You can introduce more things here if you think it's required.
+
+One thing to note is that the Domain layer is not allowed to reference other projects in your solution.
+
+### Application Layer
+The Application layer sits right above the Domain layer. It acts as an orchestrator for the Domain layer, containing the most important use cases in your application.
+
+You can structure your use cases using services or using commands and queries.
+
+I'm a big fan of the CQRS pattern, so I like to use the command and query approach.
+
+Here is the folder structure used in this template:
+![application](https://github.com/edinSahbaz/clean-api-template/assets/47791892/7c4d102f-5b00-442b-b710-a8af6f2a4402)
+
+In the Abstractions folder, we define the interfaces required for the Application layer. The implementations for these interfaces are in one of the upper layers.
+
+For every entity in the Domain layer, we create one folder with the commands, queries, and events definitions.
+
+### Infrastructure Layer
+The Infrastructure layer contains implementations for external-facing services.
+
+What would fall into this category?
+
+* Databases - PostgreSQL, MongoDB
+* Identity providers - Auth0, Keycloak
+* Emails providers
+* Storage services - AWS S3, Azure Blob Storage
+* Message queues - Rabbit MQ
+  
+Here is the folder structure used in this template:
+![infra](https://github.com/edinSahbaz/clean-api-template/assets/47791892/db57066b-91ea-4560-8295-aa945d59fea6)
+
+This project contains an implementation of DbContext if you use EF Core.
+
+It's not uncommon to make the Persistence folder its project. I do this to have all database facing-code inside of one project.
+
+### Presentation Layer
+The Presentation layer is the entry point to our system. Typically, you would implement this as a Web API project.
+
+The most important part of the Presentation layer is the Controllers(Endpoints), which define the API endpoints in our system.
+
+Here is the folder structure used in this template:
+![pres](https://github.com/edinSahbaz/clean-api-template/assets/47791892/796222c9-e092-48ea-b263-a2cb80edfde2)
+
+In this case, we moved the Presentation layer away from the actual Web API project. We do this to isolate the Controllers and enforce stricter constraints.
+
