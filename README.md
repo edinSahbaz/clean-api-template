@@ -167,7 +167,7 @@ The main objectives of architecture tests are:
 The provided project demonstrates the presence of architecture tests that enforce clean architecture principles. These tests validate the dependencies between different layers or projects, ensuring that the Domain, Application, Infrastructure, and Presentation layers adhere to their intended dependencies and do not violate the clean architecture principles. By running these architecture tests, the project maintains a consistent and modular structure, supporting the maintainability, testability, and flexibility that clean architecture promotes.
 
 ## Attributions
-* Clean Architecture: A Craftsman's Guide to Software Structure and Design by C. Martin
+* Clean Architecture: A Craftsman's Guide to Software Structure and Design by Robert C. Martin
 * https://www.milanjovanovic.tech/blog/clean-architecture-folder-structure
 * https://www.milanjovanovic.tech/blog/clean-architecture-and-the-benefits-of-structured-software-design
 * https://www.milanjovanovic.tech/blog/structured-logging-in-asp-net-core-with-serilog
