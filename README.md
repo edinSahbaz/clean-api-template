@@ -99,3 +99,49 @@ Here is the folder structure used in this template:
 
 In this case, we moved the Presentation layer away from the actual Web API project. We do this to isolate the Controllers and enforce stricter constraints.
 
+## Logging
+
+### About Serilog
+Serilog is a popular logging library for .NET applications. It provides a flexible and efficient logging framework that allows developers to capture and store log messages for debugging, monitoring, and troubleshooting purposes. With Serilog, you can easily configure log sinks, define log levels, and customize log message formatting to meet the specific requirements of your application. It offers support for structured logging, enabling the capture of rich, contextual information in log events. 
+
+Serilog integrates well with various logging targets, such as console output, files, databases, and third-party logging services, making it a versatile choice for implementing logging capabilities in your .NET projects.
+
+### Serilog configuration
+``` csharp
+builder.Host.UseSerilog((context, configuration) => 
+    configuration.ReadFrom.Configuration(context.Configuration));
+```
+
+``` csharp
+app.UseSerilogRequestLogging();
+```
+
+``` json
+{
+  "Serilog": {
+    "Using": [ "Serilog.Sinks.Console", "Serilog.Sinks.File" ],
+    "MinimumLevel": {
+      "Default": "Information",
+      "Override": {
+        "Microsoft": "Warning",
+        "System": "Warning"
+      }
+    },
+    "WriteTo": [
+      { "Name": "Console" },
+      {
+        "Name": "File",
+        "Args": {
+          "path": "/logs/log-.txt",
+          "rollingInterval": "Day",
+          "rollOnFileSizeLimit": true,
+          "formatter": "Serilog.Formatting.Compact.CompactJsonFormatter, Serilog.Formatting.Compact"
+        }
+      }
+    ],
+    "Enrich": [ "FromLogContext", "WithMachineName", "WithThreadId" ]
+  },
+}
+```
+
+## Architecture Tests
