@@ -10,4 +10,13 @@
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="7.0.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="BackgroundJobs\" />
+    <Folder Include="Persistence\EntityConfigurations\" />
+    <Folder Include="Persistence\Migrations\" />
+    <Folder Include="Persistence\Repositories\" />
+    <Folder Include="Services\Email\" />
+    <Folder Include="Services\Messaging\" />
+  </ItemGroup>
+
 </Project>

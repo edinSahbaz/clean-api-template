@@ -15,4 +15,15 @@
     <ProjectReference Include="..\Domain\Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Abstractions\Data\" />
+    <Folder Include="Abstractions\Email\" />
+    <Folder Include="Abstractions\Messaging\" />
+    <Folder Include="Behaviors\" />
+    <Folder Include="Contracts\" />
+    <Folder Include="Entity1\Commands\" />
+    <Folder Include="Entity1\Events\" />
+    <Folder Include="Entity1\Queries\" />
+  </ItemGroup>
+
 </Project>

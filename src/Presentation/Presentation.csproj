@@ -10,4 +10,10 @@
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="7.0.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Endpoints\" />
+    <Folder Include="Middlewares\" />
+    <Folder Include="ViewModels\" />
+  </ItemGroup>
+
 </Project>
