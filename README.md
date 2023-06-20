@@ -29,25 +29,6 @@ The Persistence Layer is a specific type of infrastructure layer that deals with
 
 ![image](https://github.com/edinSahbaz/clean-api-template/assets/47791892/39b3d800-fecf-4c5a-b702-9f767ee03169)
 
-## Benefits Using of Clean Architecture
-#### Maintainability: 
-Clean Architecture separates concerns and reduces code dependencies, making it easier to understand and modify individual components without impacting the entire system.
-
-#### Testability: 
-Clean Architecture promotes thorough unit testing by isolating business logic from external dependencies, allowing for focused and reliable testing of core application functionality.
-
-#### Scalability: 
-The modular structure of Clean Architecture enables independent scaling of specific components or layers, ensuring optimal performance and resource allocation.
-
-#### Technology Independence: 
-Clean Architecture decouples the core business logic from implementation details, enabling flexibility in adopting new technologies or frameworks without extensive code changes.
-
-#### Flexibility and Adaptability:
-Clean Architecture allows for easier modification and evolution of the system as requirements change, thanks to the separation of concerns and minimal ripple effects across the codebase.
-
-#### Code Reusability: 
-Clean Architecture promotes the creation of reusable code by keeping core business logic separate, reducing duplication, and improving development efficiency.
-
 ## Project Structure
 ### Domain Layer
 The Domain layer sits at the core of the Clean Architecture. Here we define things like entities, value objects, aggregates, domain events, exceptions, repository interfaces, etc.
